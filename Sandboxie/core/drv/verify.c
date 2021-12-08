@@ -402,6 +402,7 @@ NTSTATUS Conf_Read_Line(STREAM *stream, WCHAR *line, int *linenum);
 
 _FX NTSTATUS KphValidateCertificate(void)
 {
+#if 0
     static const WCHAR *path_cert = L"%s\\Certificate.dat";
     NTSTATUS status;
     ULONG path_len = 0;
@@ -556,4 +557,7 @@ CleanupExit:
         Mem_Free(signature, signatureSize);
 
     return status;
+#else
+    return STATUS_SUCCESS;
+#endif
 }

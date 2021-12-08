@@ -2,11 +2,11 @@ name: CI
 
 on:
   workflow_dispatch:
-    branches: [ master, dev ]
+    branches: [ master, patched/* ]
   push:
-    branches: [ master ]
+    branches: [ master, patched/* ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, patched/* ]
 
 jobs:
   build:

@@ -2254,7 +2254,7 @@ void CSandMan::OnAbout()
 	if (sender() == m_pAbout)
 	{
 		QString AboutCaption = tr(
-			"<h3>About Sandboxie-Plus</h3>"
+			"<h3>About Sandboxie-Plus-Patched</h3>"
 			"<p>Version %1</p>"
 			"<p>Copyright (c) 2020-2021 by DavidXanatos</p>"
 		).arg(GetVersion());

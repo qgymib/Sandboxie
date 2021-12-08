@@ -448,7 +448,7 @@ void CSettingsWindow::SaveSettings()
 
 	theConf->SetValue("Options/AutoRunSoftCompat", !ui.chkNoCompat->isChecked());
 
-	
+#if 0
 	if (m_CertChanged)
 	{
 		QByteArray Certificate = ui.txtCertificate->toPlainText().toUtf8();	
@@ -511,6 +511,7 @@ void CSettingsWindow::SaveSettings()
 
 		m_CertChanged = false;
 	}
+#endif
 
 	theConf->SetValue("Options/CheckForUpdates", CSettingsWindow__Chk2Int(ui.chkAutoUpdate->checkState()));
 
@@ -693,6 +694,8 @@ void CSettingsWindow::CertChanged()
 
 void CSettingsWindow::LoadCertificate()
 {
+	/* builtin a invalid license */
+#if 0
 	QString CertPath;
 	if (theAPI->IsConnected())
 		CertPath = theAPI->GetSbiePath() + "\\Certificate.dat";
@@ -704,6 +707,14 @@ void CSettingsWindow::LoadCertificate()
 		g_Certificate = CertFile.readAll();
 		CertFile.close();
 	}
+#else
+	static const char* s_cert =
+			"NAME: anonymous\n"
+			"DATE: 0000-00-00\n"
+			"TYPE: NULL\n"
+			"SOFTWARE: NULL\n";
+	g_Certificate = QByteArray(s_cert);
+#endif
 }
 
 #include <windows.h>
